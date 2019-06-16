@@ -16,7 +16,6 @@ class ViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Storm Viewer"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareThisApp))
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -29,8 +28,6 @@ class ViewController: UITableViewController {
         }
         
         pictures.sort()
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,12 +51,5 @@ class ViewController: UITableViewController {
             // 3. now push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
         }
-    }
-    
-    @objc func shareThisApp() {
-        let message = "Check out this app!"
-        let vc = UIActivityViewController(activityItems: [message], applicationActivities: [])
-        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        present(vc, animated: true)
     }
 }
